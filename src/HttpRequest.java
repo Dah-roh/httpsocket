@@ -90,8 +90,10 @@ final class HttpRequest implements Runnable {
 
         // Prepend a "." so that file request is within the current directory
         fileName = "." + fileName;
+        System.out.println(fileName);
         // Open the request file.
         FileInputStream fis = null;
+        //QUESTION 1 DARO EXPLAIN THIS!!!
         boolean fileExists = true;
         try {
             fis = new FileInputStream(fileName);
@@ -107,6 +109,7 @@ final class HttpRequest implements Runnable {
         if (fileExists) {
             statusLine = "HTTP/1.0 200 OK" + CRLF;
             contentTypeLine = "Content-type: " + contentType(fileName) + CRLF;
+
         }
         // Otherwise, "throw" an error into the HTML and display it
         else {
